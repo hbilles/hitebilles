@@ -1,0 +1,39 @@
+@import "../../node_modules/bourbon-neat/app/assets/stylesheets/neat-helpers";
+
+$smallplus-val: 31em;
+$medium-val:    41em;
+$large-val:     61em;
+$xlarge-val:    79em;
+
+$width-medium: $medium-val - 2em;
+$width-large:  $large-val - 2em;
+
+$smallplus: new-breakpoint(min-width $smallplus-val 6);
+$medium:    new-breakpoint(min-width $medium-val 8);
+$large:     new-breakpoint(min-width $large-val 12);
+$xlarge:    new-breakpoint(min-width $xlarge-val 16);
+
+$smallplus-only: new-breakpoint(min-width $smallplus-val max-width $medium-val 6);
+$medium-only:    new-breakpoint(min-width $medium-val max-width $large-val 8);
+$large-only:     new-breakpoint(min-width $large-val max-width $xlarge-val 12);
+
+
+// --------------------------------------------------------------------------
+// Inline Block layout - start of new grid system?
+
+@mixin span-inline($span: $columns of $container-columns, $valign: top) {
+	$columns: nth($span, 1);
+	$container-columns: container-span($span);
+
+	$parent-columns: get-parent-columns($container-columns) !global;
+
+	display: inline-block;
+	vertical-align: $valign;
+
+	width: flex-grid($columns, $container-columns);
+	margin-right: flex-gutter($container-columns);
+
+	&:last-child {
+		margin-right: 0;
+	}
+}

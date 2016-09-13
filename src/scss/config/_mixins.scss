@@ -1,0 +1,334 @@
+// --------------------------------------------------------------------------
+// =mixins
+
+@import "variables.scss";
+@import "functions.scss";
+
+// Media Queries
+
+@mixin media($query: $feature $value) {
+	$loop-to: length($query);
+	$media-query: "screen and ";
+
+	$i: 1;
+	@while $i <= $loop-to {
+		$media-query: $media-query + "(" + nth($query, $i) + ": " + nth($query, $i + 1) + ") ";
+
+		@if ($i + 1) != $loop-to {
+			$media-query: $media-query + "and ";
+		}
+
+		$i: $i + 2;
+	}
+
+	@media #{$media-query} {
+		@content;
+	}
+}
+
+// Z-levels
+
+@mixin z-depth-1() {
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12)
+}
+
+@mixin z-depth-1-half() {
+	box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+}
+
+@mixin z-depth-2() {
+	box-shadow: 0 8px 17px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+@mixin z-depth-3() {
+	box-shadow: 0 12px 15px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+}
+
+@mixin z-depth-4() {
+	box-shadow: 0 16px 28px 0 rgba(0, 0, 0, 0.22), 0 25px 55px 0 rgba(0, 0, 0, 0.21);
+}
+
+@mixin z-depth-5() {
+	box-shadow: 0 27px 24px 0 rgba(0, 0, 0, 0.2), 0 40px 77px 0 rgba(0, 0, 0, 0.22);
+}
+
+
+/* Typography */
+
+@mixin typo-preferred-font($usePreferred: true) {
+	@if $usePreferred {
+		font-family: $preferred_font;
+	}
+}
+
+@mixin typo-display-4($colorContrast: false, $usePreferred: true) {
+	@include typo-preferred-font($usePreferred);
+	
+	font-size: 7rem;
+	font-weight: 300;
+	line-height: 1;
+	letter-spacing: -0.04em;
+
+	@if $colorContrast {
+		opacity: 0.54;
+	}
+}
+
+@mixin typo-display-3($colorContrast: false, $usePreferred: true) {
+	@include typo-preferred-font($usePreferred);
+	
+	font-size: 3.5rem;
+	font-weight: 400;
+	line-height: 1.35;
+	letter-spacing: -0.02em;
+
+	@if $colorContrast {
+		opacity: 0.54;
+	}
+}
+
+@mixin typo-display-2($colorContrast: false, $usePreferred: true) {
+	@include typo-preferred-font($usePreferred);
+	
+	font-size: 2.8125rem;
+	font-weight: 400;
+	line-height: 1.067;
+
+	@if $colorContrast {
+		opacity: 0.54;
+	}
+}
+
+@mixin typo-display-1($colorContrast: false, $usePreferred: true) {
+	@include typo-preferred-font($usePreferred);
+	
+	font-size: 2.125rem;
+	font-weight: 400;
+	line-height: 1.176;
+
+	@if $colorContrast {
+		opacity: 0.54;
+	}
+}
+
+@mixin typo-headline($colorContrast: false, $usePreferred: true) {
+	@include typo-preferred-font($usePreferred);
+	
+	font-size: 1.5rem;
+	font-weight: 400;
+	line-height: 1.333;
+	-moz-osx-font-smoothing: grayscale;
+
+	@if $colorContrast {
+		opacity: 0.87;
+	}
+}
+
+@mixin typo-title($colorContrast: false, $usePreferred: true) {
+	@include typo-preferred-font($usePreferred);
+	
+	font-size: 1.25rem;
+	font-weight: 500;
+	line-height: 1;
+	letter-spacing: 0.02em;
+
+	@if $colorContrast {
+		opacity: 0.87;
+	}
+}
+
+@mixin typo-subhead($colorContrast: false, $usePreferred: true) {
+	@include typo-preferred-font($usePreferred);
+	
+	font-size: 1rem;
+	font-weight: 400;
+	line-height: 1.5;
+	letter-spacing: 0.04em;
+
+	@if $colorContrast {
+		opacity: 0.87;
+	}
+}
+
+@mixin typo-subhead-2($colorContrast: false, $usePreferred: true) {
+	@include typo-preferred-font($usePreferred);
+	
+	font-size: 1rem;
+	font-weight: 400;
+	line-height: 1.75;
+	letter-spacing: 0.04em;
+
+	@if $colorContrast {
+		opacity: 0.87;
+	}
+}
+
+@mixin typo-body-2($colorContrast: false, $usePreferred: false) {
+	@include typo-preferred-font($usePreferred);
+	
+	font-size: .875rem;
+	
+	@if $usePreferred {
+		font-weight: 500;
+	} @else {
+		font-weight: bold;
+	}
+	
+	line-height: 1.714;
+	letter-spacing: 0;
+
+	@if $colorContrast {
+		opacity: 0.87;
+	}
+}
+
+@mixin typo-body-1($colorContrast: false, $usePreferred: false) {
+	@include typo-preferred-font($usePreferred);
+	
+	font-size: .875rem;
+	font-weight: 400;
+	line-height: 1.714;
+	letter-spacing: 0;
+
+	@if $colorContrast {
+		opacity: 0.87;
+	}
+}
+
+@mixin typo-caption($colorContrast: false, $usePreferred: false) {
+	@include typo-preferred-font($usePreferred);
+	font-size: .75rem;
+	font-weight: 400;
+	line-height: 1;
+	letter-spacing: 0;
+
+	@if $colorContrast {
+		opacity: 0.54;
+	}
+}
+
+@mixin typo-blockquote($colorContrast: false, $usePreferred: true) {
+	@include typo-preferred-font($usePreferred);
+	
+	position: relative;
+	font-size: 1.5rem;
+	font-weight: 300;
+	font-style: italic;
+	line-height: 1.35;
+	letter-spacing: 0.08em;
+
+	&:before {
+		position: absolute;
+		left: -0.5em;
+		content: '“';
+	}
+
+	&:after {
+		content: '”';
+		margin-left: -0.05em;
+	}
+
+	@if $colorContrast {
+		opacity: 0.54;
+	}
+}
+
+@mixin typo-menu($colorContrast: false, $usePreferred: true) {
+	@include typo-preferred-font($usePreferred);
+	
+	font-size: .875rem;
+	font-weight: 500;
+	line-height: 1;
+	letter-spacing: 0;
+
+	@if $colorContrast {
+		opacity: 0.87;
+	}
+}
+
+@mixin typo-button($colorContrast: false, $usePreferred: true) {
+	@include typo-preferred-font($usePreferred);
+	
+	font-size: .875rem;
+	font-weight: 500;
+	text-transform: uppercase;
+	line-height: 1;
+	letter-spacing: 0;
+
+	@if $colorContrast {
+		opacity: 0.87;
+	}
+}
+
+
+
+// Focus shadow mixin.
+@mixin focus-shadow() {
+	box-shadow: 0 0 8px rgba(0,0,0,.18),0 8px 16px rgba(0,0,0,.36);
+}
+
+@mixin shadow-2dp() {
+	box-shadow: 0 1px 2px 1px rgba(0, 0, 0, $shadow-key-penumbra-opacity),
+				0 3px 1px -2px rgba(0, 0, 0, $shadow-key-umbra-opacity),
+				0 1px 5px 0 rgba(0, 0, 0, $shadow-ambient-shadow-opacity);
+}
+@mixin shadow-2dp-alt() {
+	box-shadow: //0 2px 2px 0 rgba(0, 0, 0, $shadow-key-penumbra-opacity),
+				0 3px 1px -2px rgba(0, 0, 0, $shadow-key-umbra-opacity),
+				0 1px 5px 0 rgba(0, 0, 0, $shadow-ambient-shadow-opacity);
+}
+@mixin shadow-3dp() {
+	box-shadow: 0 3px 4px 0 rgba(0, 0, 0, $shadow-key-penumbra-opacity),
+				0 3px 3px -2px rgba(0, 0, 0, $shadow-key-umbra-opacity),
+				0 1px 8px 0 rgba(0, 0, 0, $shadow-ambient-shadow-opacity);
+}
+@mixin shadow-4dp() {
+	box-shadow: 0 4px 5px 0 rgba(0, 0, 0, $shadow-key-penumbra-opacity),
+				0 1px 10px 0 rgba(0, 0, 0, $shadow-ambient-shadow-opacity),
+				0 2px 4px -1px rgba(0, 0, 0, $shadow-key-umbra-opacity);
+}
+@mixin shadow-6dp() {
+	box-shadow: 0 6px 10px 0 rgba(0, 0, 0, $shadow-key-penumbra-opacity),
+				0 1px 18px 0 rgba(0, 0, 0, $shadow-ambient-shadow-opacity),
+				0 3px 5px -1px rgba(0, 0, 0, $shadow-key-umbra-opacity);
+}
+@mixin shadow-8dp() {
+	box-shadow: 0 8px 10px 1px rgba(0, 0, 0, $shadow-key-penumbra-opacity),
+				0 3px 14px 2px rgba(0, 0, 0, $shadow-ambient-shadow-opacity),
+				0 5px 5px -3px rgba(0, 0, 0, $shadow-key-umbra-opacity);
+}
+
+@mixin shadow-16dp() {
+	box-shadow: 0 16px 24px 2px rgba(0, 0, 0, $shadow-key-penumbra-opacity),
+							0  6px 30px 5px rgba(0, 0, 0, $shadow-ambient-shadow-opacity),
+							0  8px 10px -5px rgba(0, 0, 0, $shadow-key-umbra-opacity);
+}
+
+@mixin shadow-24dp() {
+	box-shadow: 0  9px 46px  8px rgba(0, 0, 0, $shadow-key-penumbra-opacity),
+							0 11px 15px -7px rgba(0, 0, 0, $shadow-ambient-shadow-opacity),
+							0 24px 38px  3px rgba(0, 0, 0, $shadow-key-umbra-opacity);
+}
+
+
+/* Animations */
+
+@mixin animation-fast-out-slow-in($duration:0.2s) {
+	transition-duration: $duration;
+	transition-timing-function: $animation-curve-fast-out-slow-in;
+}
+
+@mixin animation-linear-out-slow-in($duration:0.2s) {
+	transition-duration: $duration;
+	transition-timing-function: $animation-curve-linear-out-slow-in;
+}
+
+@mixin animation-fast-out-linear-in($duration:0.2s) {
+	transition-duration: $duration;
+	transition-timing-function: $animation-curve-fast-out-linear-in;
+}
+
+@mixin animation-default($duration:0.2s) {
+	transition-duration: $duration;
+	transition-timing-function: $animation-curve-default;
+}

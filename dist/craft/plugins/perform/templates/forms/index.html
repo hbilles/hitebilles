@@ -1,0 +1,56 @@
+{% extends 'perform/_layout' %}
+
+{% set title = 'Forms'|t %}
+{% set selectedTab = 'forms' %}
+
+{% set content %}
+
+<div id="perform-noForms"{% if forms|length %} class="hidden"{% endif %}>
+	<p>{{ "No forms exist yet."|t }}</p>
+</div>
+
+{% if forms|length %}
+<table id="perform-forms" class="data fullwidth collapsible">
+	<thead class="sections">
+		<tr>
+			<th class="name">{{ "Name"|t }}</th>
+			<th class="handle">{{ "Handle"|t }}</th>
+			<th class="thin"></th>
+		</tr>
+	</thead>
+
+	<tbody class="sections">
+	{% for form in forms %}
+		<tr data-id="{{ form.id }}" data-name="{{ form.name }}">
+			<td>
+				<a href="{{ url('perform/forms/' ~ form.id) }}">{{ form.name }}</a>
+			</td>
+			<td>
+				<code>{{ form.handle }}</code>
+			</td>
+			<td class="thin">
+				<a href="" class="delete icon" title="{{ 'Delete'|t }}" role="button"></a>
+			</td>
+		</tr>
+	{% endfor %}
+	</tbody>
+</table>
+{% endif %}
+
+<p id="perform-newForm" class="buttons">
+	<a href="{{ url('perform/forms/new') }}" class="btn submit add icon">{{ "Add Form"|t }}</a>
+</p>
+
+{% endset %}
+
+
+{% set js %}
+var adminTable = new Craft.AdminTable({
+	tableSelector: '#perform-forms',
+	noObjectsSelector: '#perform-noForms',
+	newObjectBtnSelector: '#perform-newForm',
+	deleteAction: 'perform/forms/deleteForm',
+	confirmDeleteMessage: '{{ "Are you sure you want to delete “{name}” and all its submissions?"|t }}'
+});
+{% endset %}
+{% includeJs js %}

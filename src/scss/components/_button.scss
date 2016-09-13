@@ -1,0 +1,295 @@
+// --------------------------------------------------------------------------
+// =button
+
+@import "../config/variables.scss";
+@import "../config/mixins.scss";
+
+// The button component. Defaults to a flat button.
+.button,
+a.button {
+	@include typo-button();
+	
+	display: inline-block;
+	position: relative;
+	min-width: $button-min-width;
+	height: $button-height;
+	margin: 0;
+	padding: 0 $button-padding;
+	overflow: hidden;
+	border: none;
+	border-radius: $button-border-radius;
+	
+	background: transparent;
+	color: $button-secondary-color;
+	outline: none;
+	cursor: pointer;
+	
+	text-decoration: none;
+	text-align: center;
+	line-height: $button-height;
+	vertical-align: middle;
+	
+	will-change: box-shadow;
+	transition: box-shadow 0.2s $animation-curve-fast-out-linear-in,
+				background-color 0.2s $animation-curve-default,
+				color 0.2s $animation-curve-default;
+
+	&::-moz-focus-inner {
+		border: 0;
+	}
+
+	&:hover {
+		background-color: $button-hover-color;
+	}
+
+	&:focus:not(:active) {
+		background-color: $button-focus-color;
+	}
+
+	&:active {
+		background-color: $button-active-color;
+	}
+
+	&.button--wide {
+		padding: 0 ($button-padding * 2);
+	}
+
+	&.button--small {
+		min-width: $button-min-width * .6;
+		height: $button-height * .6;
+		padding: 0 ($button-padding * .6);
+
+		font-size: 86%;
+		line-height: $button-height * .6;
+	}
+
+	&.button--solid {
+		background-color: $button-primary-color;
+		color: $button-secondary-color;
+
+		&:hover {
+			background-color: shade($button-primary-color, 10%);
+		}
+
+		&:active {
+			background-color: shade($button-primary-color, 20%);
+		}
+
+		&:focus:not(:active) {
+			background-color: shade($button-primary-color, 10%);
+		}
+	}
+
+	&.button--outlined {
+		background-color: none;
+
+		&:hover,
+		&:active,
+		&:focus:not(:active) {
+			background-color: $button-secondary-color;
+			color: $clr-primary-contrast;
+		}
+
+		&,
+		&:hover,
+		&:active,
+		&:focus:not(:active) {
+			box-shadow: 0 0 0 1px $button-secondary-color;
+		}
+	}
+
+	&.button--outlined-alt {
+		background-color: none;
+		color: $clr-primary-contrast;
+
+		&:hover,
+		&:active,
+		&:focus:not(:active) {
+			background-color: $clr-primary-contrast;
+			color: $button-secondary-color;
+		}
+
+		&,
+		&:hover,
+		&:active,
+		&:focus:not(:active) {
+			box-shadow: 0 0 0 1px $clr-primary-contrast;
+		}
+	}
+
+	&.button--gradient {
+		background-color: none;
+		background-image: linear-gradient(to bottom, $button-primary-color 0%, $button-primary-color 50%, shade($button-primary-color, 20%) 100%);
+		//color: $clr-primary-contrast;
+
+		&:hover {
+			background-image: linear-gradient(to bottom, shade($button-primary-color, 20%) 0%, shade($button-primary-color, 20%) 50%, $button-primary-color 100%);
+		}
+
+		&,
+		&:hover,
+		&:active,
+		&:focus:not(:active) {
+			box-shadow: 0 0 0 1px rgba(shade($button-primary-color, 20%), .1);
+		}
+	}
+
+	&.button--colored {
+		color: $button-primary-color-alt;
+
+		&:hover {
+			background-color: $button-hover-color-alt;
+		}
+
+		&:active {
+			background-color: $button-active-color-alt;
+		}
+
+		&:focus:not(:active) {
+			background-color: $button-focus-color-alt;
+		}
+
+		&.button--solid {
+			background-color: $button-primary-color-alt;
+			color: $button-secondary-color-alt;
+
+			&:hover {
+				background-color: shade($button-primary-color-alt, 10%);
+			}
+
+			&:active {
+				background-color: shade($button-primary-color-alt, 20%);
+			}
+
+			&:focus:not(:active) {
+				background-color: shade($button-primary-color-alt, 10%);
+			}
+		}
+
+		&.button--outlined {
+			background-color: none;
+
+			&:hover,
+			&:active,
+			&:focus:not(:active) {
+				background-color: $button-primary-color-alt;
+				color: $clr-primary-contrast;
+			}
+
+			&,
+			&:hover,
+			&:active,
+			&:focus:not(:active) {
+				box-shadow: 0 0 0 1px $button-primary-color-alt;
+			}
+		}
+
+		&.button--gradient {
+			background-color: none;
+			background-image: linear-gradient(to bottom, $button-primary-color-alt 0%, $button-primary-color-alt 50%, shade($button-primary-color-alt, 20%) 100%);
+			color: $button-secondary-color-alt;
+
+			&:hover {
+				background-image: linear-gradient(to bottom, shade($button-primary-color-alt, 20%) 0%, shade($button-primary-color-alt, 20%) 50%, $button-primary-color-alt 100%);
+			}
+
+			&,
+			&:hover,
+			&:active,
+			&:focus:not(:active) {
+				box-shadow: 0 0 0 1px rgba(shade($button-primary-color-alt, 20%), .1);
+			}
+		}
+	}
+}
+
+input.button[type="submit"] {
+	-webkit-appearance:none;
+}
+
+// Raised buttons
+.button--raised {
+	@include shadow-2dp();
+	//background: $button-primary-color;
+
+	&:hover {
+		@include shadow-2dp-alt();
+		//background: $button-hover-color;
+	}
+
+	&:active {
+		@include shadow-4dp();
+		//background-color: $button-active-color;
+	}
+
+	&:focus:not(:active) {
+		@include focus-shadow();
+		//background-color: $button-focus-color;
+	}
+
+	/*
+	&.button--colored {
+		background: $button-primary-color-alt;
+		color: $button-secondary-color-alt;
+
+		&:hover {
+			background-color: $button-hover-color-alt;
+		}
+
+		&:active {
+			background-color: $button-active-color-alt;
+		}
+
+		&:focus:not(:active) {
+			background-color: $button-focus-color-alt;
+		}
+	}
+	*/
+}
+
+// Disabled buttons
+.button {
+	// Bump up specificity by using [disabled] twice.
+	&[disabled][disabled],
+	&.button--disabled.button--disabled {
+		color: $button-secondary-color-disabled !important;
+		cursor: default !important;
+		background-color: transparent !important;
+	}
+
+	&--raised {
+		// Bump up specificity by using [disabled] twice.
+		&[disabled][disabled],
+		&.button--disabled.button--disabled {
+			background-color: $button-primary-color-disabled !important;
+			color: $button-secondary-color-disabled !important;
+			box-shadow: none !important;
+		}
+	}
+	&--colored {
+		// Bump up specificity by using [disabled] twice.
+		&[disabled][disabled],
+		&.button--disabled.button--disabled {
+			color: $button-secondary-color-disabled !important;
+		}
+	}
+	&--outlined {
+		&[disabled][disabled],
+		&.button--disabled.button--disabled {
+			box-shadow: 0 0 0 1px $button-primary-color-disabled !important;
+		}
+	}
+}
+
+// loading state
+.button {
+	.spinner {
+		display: none;
+	}
+
+	&.submitted {
+		.spinner {
+			display: block;
+		}
+	}
+}

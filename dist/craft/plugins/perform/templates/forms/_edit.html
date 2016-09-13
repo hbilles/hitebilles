@@ -1,0 +1,293 @@
+{% extends 'perform/_layout' %}
+
+{% macro questionHtml(id, question) %}
+	{% import '_includes/forms' as forms %}
+
+	<div class="question matrixblock" data-id="{{ id }}">
+		<div class="titlebar nocheckbox">
+			<div class="blocktype"></div>
+			<div class="preview"></div>
+		</div>
+
+		<div class="actions">
+			<a class="move icon" role="button" title="Reorder"></a>
+			<a class="delete icon" role="button" title="Actions"></a>
+		</div>
+
+		{% if question and question.getAllErrors()|length %}
+		<ul>
+			{% for error in question.getAllErrors() %}
+			<li>{{ error }}</li>
+			{% endfor %}
+		</ul>
+		{% endif %}
+
+		<div class="fields">
+			{{ forms.textField({
+				label: 'Name'|t,
+				id: "questions-#{id}-name",
+				name: "questions[#{id}][name]",
+				value: question ? question.name,
+				errors: question ? question.getErrors('name')
+			}) }}
+
+			{{ forms.checkbox({
+				label: 'Required'|t,
+				id: "questions-#{id}-required",
+				name: "questions[#{id}][required]",
+				checked: question ? question.required,
+				errors: question ? question.getErrors('required')
+			}) }}
+
+			{{ forms.selectField({
+				label: 'Type'|t,
+				id: "questions-#{id}-type",
+				name: "questions[#{id}][type]",
+				value: question ? question.type,
+				errors: question ? question.getErrors('type'),
+				options: {
+					PlainText: 'Text',
+					MultilineText: 'Multiline Text',
+					Dropdown: 'Dropdown',
+					RadioButtons: 'Radio Buttons',
+					Checkboxes: 'Checkboxes',
+					DropdownEmailRouter: 'Dropdown Email Router',
+					RadioButtonsEmailRouter: 'Radio Buttons Email Router',
+					Email: 'Email',
+					Tel: 'Tel',
+					Url: 'Url',
+					Number: 'Number',
+					Date: 'Date',
+					Assets: 'Assets',
+					Hidden: 'Hidden'
+				}
+			}) }}
+			
+			<div class="submitterName">
+				{{ forms.checkbox({
+					label: "Is Submitter's Name?"|t,
+					id: "questions-#{id}-submitterName",
+					name: "questions[#{id}][submitterName]",
+					checked: question ? question.submitterName,
+					errors: question ? question.getErrors('submitterName')
+				}) }}
+			</div>
+
+			<div class="submitterEmail">
+				{{ forms.checkbox({
+					label: "Is Submitter's Email Address?"|t,
+					id: "questions-#{id}-submitterEmail",
+					name: "questions[#{id}][submitterEmail]",
+					checked: question ? question.submitterEmail,
+					errors: question ? question.getErrors('submitterEmail')
+				}) }}
+			</div>
+
+			<div class="emailAttachment">
+				{{ forms.checkbox({
+					label: "Email file as attachment?"|t,
+					id: "questions-#{id}-emailAttachment",
+					name: "questions[#{id}][emailAttachment]",
+					checked: question ? question.emailAttachment,
+					errors: question ? question.getErrors('emailAttachment')
+				}) }}
+			</div>
+
+			<div class="options">
+				{{ forms.editableTableField({
+					label: 'Options',
+					id: "questions-#{id}-options",
+					name: "questions[#{id}][options]",
+					cols: {
+						label: {
+							heading: 'Label',
+							type: 'singleline',
+							width: '50%'
+						},
+						value: {
+							heading: 'Value',
+							type: 'singleline',
+							width: '50%'
+						},
+						default: {
+							heading: 'Default',
+							type: 'checkbox'
+						}
+					},
+					rows: question ? question.options
+				}) }}
+			</div>
+		</div>
+	</div>
+
+{% endmacro %}
+
+{% import _self as self %}
+{% import '_includes/forms' as forms %}
+
+{% set selectedTab = 'forms' %}
+
+{% set content %}
+
+<form id="perform-editForm" action="" method="post" accept-charset="UTF-8">
+	<input type="hidden" name="action" value="perform/forms/saveForm">
+	<input type="hidden" name="redirect" value="perform/forms">
+	{% if form.id %}<input type="hidden" name="formId" value="{{ form.id }}">{% endif %}
+
+	{{ forms.textField({
+		first: true,
+		label: 'Name'|t,
+		instructions: 'What this form will be called in the CP.'|t,
+		id: 'name',
+		name: 'name',
+		value: form.name,
+		errors: form.getErrors('name'),
+		autofocus: true,
+		required: true,
+		translatable: true
+	}) }}
+
+	{{ forms.textField({
+		label: 'Handle'|t,
+		instructions: 'How you’ll refer to this form in the templates.'|t,
+		id: 'handle',
+		class: 'code',
+		name: 'handle',
+		value: form.handle,
+		errors: form.getErrors('handle'),
+		required: true
+	}) }}
+
+	<hr>
+
+	<h2>Emails</h2>
+
+	{{ forms.editableTableField({
+		label: 'Options',
+		id: 'emails',
+		name: 'emails',
+		cols: {
+			to: {
+				heading: 'To',
+				type: 'singleline'
+			},
+			fromEmail: {
+				heading: 'From Email',
+				type: 'singleline'
+			},
+			subject: {
+				heading: 'Subject',
+				type: 'singleline'
+			},
+			body: {
+				heading: 'Body',
+				type: 'multiline'
+			},
+			'template': {
+				heading: 'Email Template Path',
+				type: 'singleline'
+			}
+		},
+		rows: form ? form.emails
+	}) }}
+
+	<hr>
+
+	<h2>Questions</h2>
+
+	<div id="questions" class="blocks">
+		{% for questionId, question in questions %}
+			{{ self.questionHtml(questionId, question) }}
+		{% endfor %}
+	</div>
+
+	<div class="buttons">
+		<a id="perform-addQuestion" href="" class="btn add icon">Add question</a>
+	</div>
+
+	<hr>
+
+	<h2>Form Submission Actions</h2>
+
+	{{ forms.textField({
+		label: 'Success Redirect'|t,
+		instructions: 'The URL to redirect the user to after submitting a form.'|t,
+		id: 'successRedirect',
+		class: 'code',
+		name: 'successRedirect',
+		value: form.successRedirect,
+		errors: form.getErrors('successRedirect')
+	}) }}
+
+	{% if craft.perform.settingIsSet('highrise') %}
+		{{ forms.editableTableField({
+			label: 'Highrise Tags',
+			id: 'highriseTags',
+			name: 'highriseTags',
+			cols: {
+				tag: {
+					heading: 'Tag',
+					type: 'singleline',
+					width: '100%',
+				},
+			},
+			rows: form ? form.highriseTags
+		}) }}
+	{% endif %}
+
+	{% if craft.perform.settingIsSet('cm') %}
+		{{ forms.lightswitchField({
+			label: 'Save submitter to Campaign Monitor?'|t,
+			id: 'saveToCm',
+			name: 'saveToCm',
+			on: form.saveToCm,
+			onLabel: 'Yes'|t,
+			offLabel: 'No'|t
+		}) }}
+
+		{{ forms.lightswitchField({
+			label: 'Require submitter opt-in to Campaign Monitor?'|t,
+			id: 'cmRequireOptIn',
+			name: 'cmRequireOptIn',
+			on: form.cmRequireOptIn,
+			onLabel: 'Yes'|t,
+			offLabel: 'No'|t
+		}) }}
+
+		{{ forms.editableTableField({
+			label: 'Campaign Monitor Segments',
+			id: 'cmSegments',
+			name: 'cmSegments',
+			cols: {
+				field: {
+					heading: 'Campaign Monitor Field',
+					type: 'singleline',
+					width: '50%',
+				},
+				segment: {
+					heading: 'Segment',
+					type: 'singleline',
+					width: '50%',
+				},
+			},
+			rows: form ? form.cmSegments
+		}) }}
+	{% endif %}
+
+	<hr>
+
+	<div class="buttons">
+		<input type="submit" class="btn submit" value="{{ 'Save'|t }}">
+	</div>
+</form>
+
+<script type="text/template" id="questionTemplate">
+	{{ self.questionHtml('__QUESTION_ID__') }}
+</script>
+
+{% endset %}
+
+{% set js %}
+	{% if not form.handle %}new Craft.HandleGenerator('#name', '#handle');{% endif %}
+{% endset %}
+{% includeJs js %}

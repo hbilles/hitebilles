@@ -1,0 +1,136 @@
+// --------------------------------------------------------------------------
+// html
+
+html {
+	box-sizing: border-box;
+}
+
+* {
+	box-sizing: inherit;
+}
+
+html,
+body {
+	height: 100%;
+}
+
+body {
+	@include font-sans();
+	
+	color: $clr-ui-text;
+}
+
+
+// --------------------------------------------------------------------------
+// content
+
+p {
+	margin: 0 0 1.7em;
+}
+
+ul {
+	margin: 0 0 1.7em;
+
+	ul {
+		margin: 0;
+	}
+}
+
+li {
+	margin: 0 0 .85em;
+}
+
+p, li {
+	font-size: rem($fs-bump-small);
+	line-height: 1.6;
+
+	@include media($medium) {
+		font-size: rem($fs-bump-medium);
+	}
+
+	/*
+	@include media($large) {
+		font-size: rem($fs-body-large);
+	}
+	*/
+}
+
+figure {
+	margin: 0 0 1.7em;
+	
+	img {
+		width: 100%;
+	}
+}
+
+figcaption {
+	margin: .5rem 0 0;
+
+	color: $clr-medium-grey;	
+	
+	font-size: rem($fs-fine-small);
+	text-align: center;
+
+	@include media($medium) {
+		font-size: rem($fs-fine-large)
+	}
+
+	p {
+		margin: 0;
+
+		font-size: 1em;
+	}
+}
+
+blockquote {
+	@include font-serif(400, italic);
+
+	margin: 2em 0;
+	padding: 1.5em 0 .25em;
+	quotes: '“' '”' '‘' '’';
+
+	text-align: center;
+
+	p {
+		margin: 0 0 1em;
+		padding: 0 7%;
+		
+		font-size: rem($fs-bump-small);
+		line-height: 1.6;
+
+		@include media($medium) {
+			padding: 0 5%;
+
+			font-size: em($fs-bump-medium);
+		}
+
+		/*
+		@include media($large) {
+			padding: 0 7%;
+
+			font-size: em($fs-bump-large);
+		}
+		*/
+	}
+
+	.source {
+		@include font-sans();
+		
+		font-size: em($fs-fine-small);
+		font-style: normal;
+
+		@include media($medium) {
+			font-size: em($fs-body-small);
+		}
+	}
+
+	.author {
+		@include font-sans(700);
+		
+		display: block;
+	}
+}
+
+address {
+	font-style: normal;
+}

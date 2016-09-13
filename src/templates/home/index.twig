@@ -1,0 +1,51 @@
+{% extends '_layouts/main' %}
+
+{% set homeTitle = entry.metaTitle | default(entry.title) %}
+{% set metaDescription = entry.metaDescription %}
+
+{% block content %}
+
+{# ------------------------------------
+INTRO CONTENT
+------------------------------------ #}
+<section class="section intro">
+	<canvas class="intro__canvas"></canvas>
+
+	<div class="section__in">
+		<div class="intro__content">
+			<h1>{{ entry.title }}</h1>
+				
+			{{ entry.copy | md }}
+
+			{% for asset in entry.portrait %}
+			<figure class="intro__portrait">
+				{% if entry.linkedin | length %}<a href="{{ entry.linkedin }}" title="Connect on LinkedIn">{% endif %}
+					<img src="{{ asset.getUrl('smallSquare') }}" alt="Hite Billes">
+				{% if entry.linkedin | length %}</a>{% endif %}
+			</figure>
+			{% endfor %}
+		</div>
+	</div>
+</section>
+
+
+{# ------------------------------------
+PROJECTS
+------------------------------------ #}
+<section id="showcase">
+	<showcase></showcase>
+</section>
+
+{# ------------------------------------
+CONTACT
+------------------------------------ #}
+<section class="section contact">
+	<canvas class="contact__canvas"></canvas>
+
+	<div class="section__in" data-aos="fade-up" data-aos-delay="1500">
+		{% include '_includes/_form' with { form: entry.form } %}
+	</div>
+</section>
+
+{% endblock %}
+

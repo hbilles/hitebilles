@@ -1,0 +1,12 @@
+{% extends '_layouts/cp' %}
+
+{# global plugin template resources should be loaded here #}
+
+{% set tabs = {
+	submissions: { label: "Submissions"|t, url: url('perform') },
+	forms:       { label: "Forms"|t, url: url('perform/forms') },
+	export:      { label: "Export"|t, url: url('perform/export') },
+} %}
+
+{% includeJsResource 'perform/js/app.js' %}
+{% includeCssResource 'perform/css/app.css' %}

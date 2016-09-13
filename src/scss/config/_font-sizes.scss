@@ -1,0 +1,52 @@
+// -------------------------------------------------------------------------
+// font-sizes
+
+$fs-base: 16; // THIS IS THE BROWSER'S BASE SIZE CONSTANT. DO NOT MODIFY.
+
+// small screens
+
+//$fs-h1-small: 33;
+$fs-h1-small: 60;
+//$fs-h2-small: 28;
+$fs-h2-small: 40;
+$fs-h3-small: 23;
+$fs-h4-small: 19;
+$fs-h5-small: 16;
+
+$fs-body-small: 16;
+$fs-bump-small: 17;
+$fs-summary-small: 20;
+$fs-fine-small: 13;
+$fs-xfine-small: 10;
+
+
+// medium screens
+//$fs-h1-medium: 52;
+$fs-h1-medium: 100;
+//$fs-h2-medium: 33;
+$fs-h2-medium: 50;
+$fs-h3-medium: 29;
+$fs-h4-medium: 22;
+$fs-h5-medium: 19;
+
+$fs-body-medium: 18;
+$fs-bump-medium: 19;
+$fs-summary-medium: 22;
+$fs-fine-medium: 14;
+$fs-xfine-medium: 11;
+
+
+// large screens
+
+$fs-h1-large: 58;
+$fs-h2-large: 42;
+$fs-h3-large: 43;
+$fs-h4-large: 29;
+$fs-h5-large: 22;
+
+//$fs-body-large: 20;
+$fs-body-large: 23;
+$fs-bump-large: 24;
+$fs-summary-large: 27;
+$fs-fine-large: 14;
+$fs-xfine-large: 11;

@@ -1,0 +1,14 @@
+{% extends '_layouts/elementindex' %}
+{% set title = 'Submissions'|t %}
+
+{% set elementType = 'Perform_Submission' %}
+
+{% set tabs = {
+	submissions: { label: "Submissions"|t, url: url('perform') },
+	forms:       { label: "Forms"|t, url: url('perform/forms') },
+	export:      { label: "Export"|t, url: url('perform/export') },
+} %}
+{% set selectedTab = 'submissions' %}
+
+{% includeCssResource 'perform/css/app.css' %}
+{% includeJsResource 'perform/js/app.js' %}

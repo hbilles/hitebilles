@@ -1,0 +1,41 @@
+{% set cssVersion = '0.0.1' %}
+{% set jsVersion = '0.0.1' %}
+
+<!doctype html>
+
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>{% if metaTitle is defined %}{{ metaTitle }} {{ craft.config.titleBullet }} {% endif %}{{ siteName }}{% if homeTitle is defined %} {{ craft.config.titleBullet }} {{ homeTitle }}{% endif %}</title>
+	{% if metaDescription is defined %}<meta name="description" content="{{ metaDescription }}">{% endif %}
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<meta name="author" content="J. Hite Billes">
+
+	{% include '_includes/_favicons' %}
+
+	{% if canonicalUrl is defined %}<link rel="canonical" href="{{ canonicalUrl }}">{% endif %}
+
+	{#{% include '_includes/_socialMediaHead' %}#}
+	{% include '_includes/_stylesheets' %}
+	{% include '_includes/_scriptsHead' %}
+</head>
+
+<body>
+<script>
+	var bdy = document.getElementsByTagName('body');
+	bdy[0].className = 'js';
+</script>
+
+<div id="top"></div>
+	
+<main id="content"{% if contentClass is defined %} class="{{ contentClass }}"{% endif %} itemprop="mainContentOfPage">
+	{% block content %}
+	{% endblock %}
+</main>
+	
+{% include '_includes/_scriptsFooter' %}
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+.message {
+	display: block;
+	margin: 1.5em 0;
+
+	border-width: 1px;
+	border-style: solid;
+	background-color: rgba(255, 255, 255, .9);
+
+	&--success {
+		background-color: rgba($clr-lime-200, .9);
+		border-color: $clr-lime-700;
+		color: $clr-lime-800;
+	}
+
+	&--error {
+		background-color: rgba($clr-red-200, .9);
+		border-color: $clr-red-700;
+		color: $clr-red-800;
+	}
+
+	p {
+		margin: 1em 0;
+	}
+}

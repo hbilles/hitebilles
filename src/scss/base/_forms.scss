@@ -1,0 +1,145 @@
+// --------------------------------------------------------------------------
+// =forms
+
+form {
+	
+	ol {
+		margin: 0;
+		padding: 0;
+	}
+	
+	li,
+	p,
+	.question {
+		list-style: none;
+		margin: 0 0 1em;
+
+		&.required {
+			position: relative;
+
+			&:before {
+				position: absolute;
+				left: -.75em;
+				top: .3em;
+				
+				content: '*';
+				display: block;
+
+				color: $clr-ui-warning;
+
+				@include media($medium) {
+					left: -1em;
+				}
+			}
+		}
+	}
+}
+
+fieldset {
+	margin: 0 0 1.5em;
+}
+
+/*
+label {
+	display: block;
+	
+	margin: 0 0 .5em;
+
+	//font-weight: bold;
+	line-height: 1;
+
+	.help {
+		margin: 0 0 0 .5em;
+		
+		font-size: inherit;
+		font-weight: normal;
+	}
+
+	&.error {
+		margin: .5em 0 0;
+		
+		color: $clr-ui-warning;
+		
+		text-transform: none;
+		font-weight: normal;
+	}
+
+	span {
+		display: inline-block;
+		opacity: .75;
+		
+		font-size: 80%;
+	}
+}
+
+.help {
+	font-size: em($fs-fine-small);
+}
+
+input[type='text'],
+input[type='password'],
+input[type='email'],
+input[type='tel'],
+input[type='url'],
+input[type='number'],
+textarea,
+select {
+	appearance: none;
+
+	border: 1px solid $clr-lighter-grey;
+
+	color: $clr-dark-grey;
+	background-color: $clr-white;
+}
+
+input[type='text'],
+input[type='password'],
+input[type='email'],
+input[type='tel'],
+input[type='url'],
+input[type='number'],
+select,
+textarea {
+	padding: .5em;
+	width: 100%;
+	max-width: 30em;
+
+	line-height: 1.4;
+}
+
+input.error,
+textarea.error,
+select.error {
+	border: 1px solid $clr-ui-warning;
+
+	color: $clr-ui-warning;
+	background-color: pink;
+}
+
+span.error {
+	display: block;
+	margin: .5em 0 0;
+	
+	color: $clr-ui-warning;
+	
+	font-size: em($fs-body-small);
+}
+
+select {
+	padding: .5em;
+	width: 100%;
+	max-width: 30em;
+	border-radius: 0;
+}
+
+.note {
+	font-size: em($fs-body-small);
+}
+*/
+
+// honeypot field
+.yourcomments {
+	display: none;
+}
+
+

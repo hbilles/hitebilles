@@ -1,0 +1,117 @@
+// --------------------------------------------------------------------------
+// =variables
+
+@import "colors.scss";
+@import "functions.scss";
+
+/* We're splitting fonts into "preferred" and "performance" in order to optimize
+   page loading. For important text, such as the body, we want it to load
+   immediately and not wait for the web font load, whereas for other sections,
+   such as headers and titles, we're OK with things taking a bit longer to load.
+   We do have some optional classes and parameters in the mixins, in case you
+   definitely want to make sure you're using the preferred font and don't mind
+   the performance hit.
+   We should be able to improve on this once CSS Font Loading L3 becomes more
+   widely available.
+*/
+$preferred_font: 'Source Sans Pro', 'Helvetica', 'Arial', sans-serif !default;
+$performance_font: 'Helvetica', 'Arial', sans-serif !default;
+
+/* ==========  Breakpoints  ========== */
+
+$smallplus-val: 31em !default;
+$medium-val:    41em !default;
+$large-val:     61em !default;
+$xlarge-val:    79em !default;
+
+$width-medium: $medium-val - 2em !default;
+$width-large:  $large-val - 2em !default;
+
+$smallplus: min-width $smallplus-val !default;
+$medium:    min-width $medium-val !default;
+$large:     min-width $large-val !default;
+$xlarge:    min-width $xlarge-val !default;
+
+$smallplus-only: min-width $smallplus-val max-width $medium-val !default;
+$medium-only:    min-width $medium-val max-width $large-val !default;
+$large-only:     min-width $large-val max-width $xlarge-val !default;
+
+/* ==========  Color & Themes  ========== */
+
+// Use color primarily for emphasis. Choose colors that fit with
+// your brand and provide good contrast between visual components.
+$clr-primary: $clr-indigo-A400 !default;
+$clr-primary-dark: $clr-indigo-700 !default;
+$clr-accent: $clr-teal-400 !default;
+
+// Our primary is dark, so use $clr-dark-contrast for overlaid text.
+$clr-primary-contrast: $clr-dark-contrast !default;
+// Our accent is dark, so use $clr-dark-contrast for overlaid text.
+$clr-accent-contrast: $clr-dark-contrast !default;
+
+$text-color-primary: rgba($clr-black, 0.6) !default;
+$text-link-color: rgba($clr-accent, 1) !default;
+$text-link-hover-color: $clr-primary !default;
+
+/* ==========  Components  ========== */
+
+/* ==========  Standard Buttons  ========== */
+
+// Default button colors.
+$button-primary-color: rgba($clr-grey-500, 0.20) !default;
+$button-secondary-color: rgba($clr-black, 1) !default;
+$button-hover-color: $button-primary-color !default;
+$button-active-color: rgba($clr-grey-500, 0.40) !default;
+$button-focus-color: rgba($clr-black, 0.12) !default;
+
+// Colored button colors.
+$button-primary-color-alt: rgba($clr-primary, 1) !default;
+$button-secondary-color-alt: rgba($clr-primary-contrast, 1) !default;
+$button-hover-color-alt: rgba($clr-primary, .2) !default;
+$button-active-color-alt: rgba($clr-primary, 0.6) !default;
+$button-focus-color-alt: $button-hover-color-alt !default;
+
+// Disabled button colors.
+$button-primary-color-disabled: rgba($clr-black, 0.12) !default;
+$button-secondary-color-disabled: rgba($clr-black, 0.26) !default;
+
+/* ==========  Text fields  ========== */
+
+$input-text-background-color: rgba(255, 255, 255, .9) !default;
+$input-text-background-focus-color: rgba(255, 255, 255, .9) !default;
+//$input-text-label-color: rgba($clr-black, 0.26) !default;
+$input-text-label-color: rgba($clr-black, 0.44) !default;
+$input-text-border-color: rgba($clr-black, 0.44) !default;
+$input-text-highlight-color: rgba($clr-primary, 1) !default;
+$input-text-disabled-color: $input-text-border-color !default;
+$input-text-disabled-text-color: $input-text-label-color !default;
+$input-text-error-color: rgba($clr-red-A700, 1) !default;
+
+$input-text-font-size: 1rem !default;
+$input-text-width: 100% !default;
+$input-text-padding: .75rem !default;
+$input-text-vertical-spacing: 1.25rem !default;
+
+$input-text-button-size: 2rem !default;
+$input-text-floating-label-fontsize: .75rem !default;
+$input-text-expandable-icon-top: 1rem !default;
+
+/* Button Dimensions */
+$button-min-width: 4rem !default;
+$button-height: 2.25rem !default;
+$button-padding: 1rem !default;
+$button-margin: .25rem !default;
+$button-border-radius: 2px !default;
+
+/* ANIMATION */
+$animation-curve-fast-out-slow-in: cubic-bezier(0.4, 0, 0.2, 1) !default;
+$animation-curve-linear-out-slow-in: cubic-bezier(0, 0, 0.2, 1) !default;
+$animation-curve-fast-out-linear-in: cubic-bezier(0.4, 0, 1, 1) !default;
+
+$animation-curve-default: $animation-curve-fast-out-slow-in !default;
+
+/* SHADOWS */
+
+$shadow-key-umbra-opacity: 0.2 !default;
+$shadow-key-penumbra-opacity: 0.14 !default;
+$shadow-ambient-shadow-opacity: 0.12 !default;

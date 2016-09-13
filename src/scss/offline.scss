@@ -1,0 +1,87 @@
+@import "../../node_modules/bourbon/app/assets/stylesheets/bourbon";
+@import "config/grid-settings.scss";
+@import "../../node_modules/bourbon-neat/app/assets/stylesheets/neat";
+
+@import "config/webfonts.scss";
+@import "config/colors.scss";
+@import "config/font-sizes.scss";
+@import "config/h5bp.scss";
+@import "config/misc-variables.scss";
+
+
+html,
+body {
+	height: 100%;
+}
+
+body {
+	@include font-sans();
+	
+	background-color: $clr-white;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	text-align: center;
+}
+
+h1 {
+	margin: 0;
+	padding: 0;
+	text-align: center;
+
+	font-size: 1px;
+}
+
+h2 {
+	margin: 4em 0 0;
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+#content {
+	position: absolute;
+	
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+
+	margin: auto;
+
+	$logo_width: 855;
+	$logo_height: 115;
+	$logo_ratio: $logo_height / $logo_width;
+
+	$small_width: 320px;
+	$medium_width: 480px;
+	$large_width: 790px;
+
+	$small_height: $small_width * $logo_ratio;
+	$medium_height: $medium_width * $logo_ratio;
+	$large_height: $large_width * $logo_ratio;
+	
+	width: $large_width;
+	height: $large_height;
+
+	@media ( max-width: 800px ) {
+		width: $medium_width;
+		height: $medium_height;
+	}
+
+	@media ( max-width: 480px ) {
+		width: $small_width;
+		height: $small_height;
+	}
+
+}
+
+
+// EOF

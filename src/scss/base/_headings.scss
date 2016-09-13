@@ -1,0 +1,82 @@
+// --------------------------------------------------------------------------
+// headings
+
+h3,
+h4,
+h5,
+h6 {
+	@include font-sans(300, normal, 'Raleway');
+	line-height: 1.1;
+}
+
+h1 {
+	@include font-sans(100, normal, 'Raleway');
+
+	margin: 0 0 .375em;
+
+	font-size: em($fs-h1-small);
+	line-height: 1.1em;
+
+	@include media($medium) {
+		margin: 0 0 .5em;
+
+		font-size: em($fs-h1-medium);
+	}
+
+	/*
+	@include media($large) {
+		margin: 0 0 .3em;
+
+		font-size: em($fs-h1-large);
+	}
+	*/
+}
+
+h2 {
+	@include font-sans(100, normal, 'Raleway');
+	margin: 0 0 .45em;
+
+	font-size: em($fs-h2-small);
+	line-height: 1.1;
+
+	@include media($medium) {
+		font-size: em($fs-h2-medium);
+	}
+
+	/*
+	@include media($large) {
+		font-size: em($fs-h2-large);
+	}
+	*/
+}
+
+h3 {
+	//margin: 0 0 .35em;
+	margin: .94em 0 .625em;
+
+	font-size: em($fs-h3-small);
+
+	@include media($medium) {
+		font-size: em($fs-h3-medium);
+	}
+}
+
+h4 {
+	margin: 1.5em 0 .375em;
+
+	font-size: em($fs-h4-small);
+
+	@include media($medium) {
+		font-size: em($fs-h4-medium);
+	}
+}
+
+h5 {
+	margin: 0 0 .375em;
+	
+	font-size: em($fs-h5-small);
+
+	@include media($medium) {
+		font-size: em($fs-h5-medium);
+	}
+}

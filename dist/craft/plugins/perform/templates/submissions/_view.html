@@ -1,0 +1,23 @@
+{% extends 'perform/_layout' %}
+{% set title = 'Submission ' ~ submission %}
+
+{% set content %}
+<table class="data fullwidth">
+	<tbody>
+		{% for question in submission.getForm().getQuestions() %}
+			<tr>
+				<th>{{ question.name }}</th>
+
+				<td>
+					{% if question.type in ['Assets'] %}
+						{{ submission.downloadLink(question.handle) | raw }}
+					{% else %}
+						{{ submission[question.handle] }}
+					{% endif %}
+
+				</td>
+			</tr>
+		{% endfor %}
+	</tbody>
+</table>
+{% endset %}

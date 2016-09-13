@@ -1,0 +1,82 @@
+{
+  "name": "hitebilles",
+  "description": "Website code repo for Hite Billes",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hbilles/hitebilles.git"
+  },
+  "version": "0.1.0",
+  "browserify": {
+    "transform": [
+      "vueify",
+      "babelify"
+    ]
+  },
+  "scripts": {
+    "watch": "gulp watch",
+    "build": "gulp",
+    "production": "gulp --production",
+    "lint": "gulp scripts:lint"
+  },
+  "devDependencies": {
+    "autoprefixer": "^6.3.7",
+    "babel-core": "^6.11.4",
+    "babel-eslint": "^6.1.2",
+    "babel-plugin-transform-runtime": "^6.9.0",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-stage-2": "^6.11.0",
+    "babel-runtime": "^6.9.2",
+    "babelify": "^7.3.0",
+    "browser-sync": "^2.13.0",
+    "browserify": "^13.1.0",
+    "cssnano": "^3.7.3",
+    "del": "^2.2.1",
+    "eslint": "^3.1.1",
+    "eslint-plugin-html": "^1.5.1",
+    "eslint-plugin-import": "^1.12.0",
+    "fs": "0.0.2",
+    "gulp": "^3.9.1",
+    "gulp-cached": "^1.1.0",
+    "gulp-eslint": "^3.0.1",
+    "gulp-filter": "^4.0.0",
+    "gulp-if": "^2.0.1",
+    "gulp-imagemin": "^3.0.2",
+    "gulp-modify": "^0.1.1",
+    "gulp-notify": "^2.2.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-postcss": "^6.1.1",
+    "gulp-rename": "^1.2.2",
+    "gulp-rev": "^7.1.0",
+    "gulp-sass": "^2.3.2",
+    "gulp-sequence": "^0.4.5",
+    "gulp-size": "^2.1.0",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-uglify": "^1.5.4",
+    "lazypipe": "^1.0.1",
+    "node-bourbon": "^4.2.8",
+    "node-neat": "^1.7.2",
+    "path": "^0.12.7",
+    "postcss-assets": "^4.1.0",
+    "postcss-reporter": "^1.4.1",
+    "postcss-scss": "^0.1.9",
+    "require-dir": "^0.3.0",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0",
+    "vue": "^1.0.26",
+    "vue-hot-reload-api": "^2.0.6",
+    "vueify": "^8.7.0",
+    "vueify-insert-css": "^1.0.0",
+    "vuex": "^1.0.0-rc.2",
+    "yargs": "^4.8.0"
+  },
+  "dependencies": {
+    "aos": "^2.0.4",
+    "jquery": "^3.1.0",
+    "lodash": "^4.14.2",
+    "moment": "^2.14.1",
+    "object-assign": "^4.1.0",
+    "smoothscroll": "^0.2.2",
+    "superagent": "^2.1.0",
+    "vue-markdown": "^1.2.0"
+  }
+}

@@ -1,0 +1,14 @@
+<meta property="og:site_name" content="{{ siteName }}">
+{% if metaTitle is defined %}<meta property="og:title" content="{{ metaTitle }}">{% endif %}
+{% if metaDescription is defined %}<meta property="og:description" content="{{ metaDescription }}">{% endif %}
+<meta property="og:type" content="article">
+<meta property="og:url" content="{{ craft.request.url() }}">
+<meta property="og:image" content="{% if ogImage is defined %}{{ ogImage }}{% else %}{{ siteUrl }}ui/img/fallback.png{% endif %}">
+
+<meta name="twitter:card" content="summary">
+<meta property="twitter:url" content="{{ craft.request.url() }}">
+{% if metaTitle is defined %}<meta property="twitter:title" content="{{ metaTitle }}">{% endif %}
+{% if metaDescription is defined %}<meta property="twitter:description" content="{{ metaDescription }}">{% endif %}
+<meta property="twitter:image" content="{% if ogImage is defined %}{{ ogImage }}{% else %}{{ siteUrl }}/ui/img/fallback.png{% endif %}">
+
+<link rel="publisher" href="https://plus.google.com/101937278336717319482/">

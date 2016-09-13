@@ -1,0 +1,8 @@
+{
+    "config": {
+        "vendor-dir": "dist/vendor"
+    },
+    "require": {
+        "vlucas/phpdotenv": "^2.3"
+    }
+}

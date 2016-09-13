@@ -1,0 +1,9 @@
+{% if entry.socialMedia|length %}
+<ul class="{{ class|default('') }} social-media">
+{% for socialMedia in entry.socialMedia %}
+	<li>
+		<a href="{{ socialMedia.siteUrl }}" class="social-media__site {{ socialMedia.platform.value }}"><span class="social-media__link-text">{{ socialMedia.linkText }}</span></a>
+	</li>
+{% endfor %}
+</ul>
+{% endif %}

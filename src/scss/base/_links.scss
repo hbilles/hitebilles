@@ -1,0 +1,55 @@
+// --------------------------------------------------------------------------
+// links
+
+a {
+	@include transition(all 0.2s ease-in-out);
+
+	text-decoration: none;
+
+	&:link {
+		color: $clr-ui-link;
+		//text-decoration: underline;
+
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6 {
+			color: $clr-ui-link;
+		}
+	}
+
+	&:visited {
+		color: $clr-ui-link;
+
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6 {
+			color: $clr-ui-link;
+		}
+	}
+
+	&:hover,
+	&:visited:hover {
+		color: $clr-ui-link-hover;
+
+		h1,
+		h2,
+		h3,
+		h4,
+		h5,
+		h6 {
+			color: $clr-ui-link-hover;
+		}
+	}
+}
+
+a img {
+	border: none;
+	
+	text-decoration: none;
+}

@@ -1,0 +1,30 @@
+# OS and editor files
+.sass-cache
+*.sublime-workspace
+*.tmp
+.tmp/*
+composer.lock
+composer.phar
+
+# CMS files
+dist/craft/app
+dist/craft/storage/*
+!dist/craft/storage/rebrand
+
+# Database
+_database/dump/*
+_database/docker/*
+
+# Asset pipeline files
+node_modules
+jspm_packages
+src/rev-manifest.json
+
+# Distribution files
+dist/.env
+dist/vendor
+dist/craft/templates
+dist/public
+
+# Keep empty folders
+!.gitkeep

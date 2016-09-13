@@ -1,0 +1,12 @@
+{% extends "_layouts/main" %}
+{% set metaTitle = thanks.heading %}
+
+{% block content %}
+<section class="section">
+	<div class="section__in">
+		<h1>{{ thanks.heading }}</h1>
+	
+		{{ thanks.copy | md }}
+	</div>
+</section>
+{% endblock %}

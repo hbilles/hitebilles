@@ -1,0 +1,12 @@
+{% extends "_layouts/main" %}
+{% set metaTitle = "404" %}
+
+{% block content %}
+<section class="section">
+	<div class="section__in">
+		<h1>{{ error404.heading }}</h1>
+	
+		{{ error404.copy | md }}
+	</div>
+</section>
+{% endblock %}
